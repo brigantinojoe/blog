@@ -24,13 +24,21 @@ Comments.init(
         type: DataTypes.DATE,
         allowNull: false,
       },
+    post_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'posts',
+        key: 'id'
+      }
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'comments',
   }
 );
 
