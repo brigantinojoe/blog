@@ -1,0 +1,19 @@
+<section class="p-3 bg-secondary" style="height: 100vh;">
+{{#each posts as |post| }}
+  <div class="card mt-3" id="{{id}}">
+    <div class="card-header flex-column bg-secondary text-light">
+      {{title}}
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{content}}</p>
+        <footer class="blockquote-footer">{{username}} on {{format_date date}}
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+{{/each}}
+<div class="mt-3 d-flex row justify-content-center fixed-bottom">
+<button type="button" class="w-10 btn btn-dark text-center">+ New Post</button>
+</div>
+</section>

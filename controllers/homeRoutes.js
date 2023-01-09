@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comments } = require('../models');
 
 // Prevent non logged in users from viewing their dashboard
 router.get('/', async (req, res) => {
@@ -38,3 +38,19 @@ router.get('/signup', (req, res) => {
 });
 
 module.exports = router;
+
+router.get('/dashboard', async (req, res) => {
+  try {
+    // Database sequilize get all posts. Render posts to dashboard
+    const dbPosts = await Post.findAll({ where: { user_id: req.session.user_id } });
+    const posts = dbPosts.map((project) => project.get({ plain: true }));
+
+    res.render('dashboard', {
+      posts,
+      user_id: req.session.user_id,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
