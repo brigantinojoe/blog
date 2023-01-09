@@ -1,16 +1,16 @@
 <section class="p-3 bg-secondary" style="height: 100vh;">
-{{!-- {{#each users as |user| }} --}}
-  <div class="card">
+{{#each posts as |post| }}
+  <div class="card mt-3" id="{{id}}">
     <div class="card-header flex-column bg-secondary text-light">
-      Post Title Here
+      {{title}}
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Author
+        <p>{{content}}</p>
+        <footer class="blockquote-footer">{{username}} on {{format_date date}}
         </footer>
       </blockquote>
     </div>
   </div>
-{{!-- {{/each}} --}}
+{{/each}}
 </section>
