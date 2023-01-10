@@ -1,5 +1,5 @@
 <section class="p-3 bg-secondary" style="height: 100vh;">
-{{#each posts as |post| }}
+  {{#each posts as |post| }}
   <div class="card mt-3" id="{{id}}">
     <div class="card-header flex-column bg-secondary text-light">
       {{title}}
@@ -12,8 +12,9 @@
       </blockquote>
     </div>
   </div>
-{{/each}}
-<div class="mt-3 d-flex row justify-content-center fixed-bottom">
-<button type="button" class="w-10 btn btn-dark text-center">+ New Post</button>
-</div>
+  {{/each}}
+  <div class="mt-3 d-flex row justify-content-center fixed-bottom">
+    <button type="button" class="w-10 btn btn-dark text-center" id="new-post">+ New Post</button>
+  </div>
 </section>
+<script src="./js/posts.js"></script>

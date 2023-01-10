@@ -11,11 +11,11 @@ const loginFormHandler = async (event) => {
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-    console.log(response);
+    
     if (response.ok) {
       document.location.replace('/');
     } else {
-      console.log(username, password);
+      
       alert('Failed to log in');
     }
   }
