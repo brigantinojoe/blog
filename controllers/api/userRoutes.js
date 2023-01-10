@@ -80,4 +80,18 @@ router.post('/save-post', async (req, res) => {
   }
 });
 
+router.post('/delete-post', async (req, res) => {
+  try {
+    const dbPosts = await Post.destroy({
+      where: {
+        id: req.body.post_id
+      }
+    });
+    res.status(200).json(dbPosts);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;
