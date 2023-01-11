@@ -30,3 +30,17 @@ const deletePost = async (event) => {
 document.querySelectorAll('.delete-post').forEach(item => {
   item.addEventListener('click', deletePost)
 });
+
+const editPost = async (event) => {
+  event.preventDefault();
+  const target = event.target;
+  const post_id = target.getAttribute('value');
+  console.log(post_id);
+
+  document.location.replace(`/${post_id}`);
+
+};
+
+document.querySelectorAll('.edit-post').forEach(item => {
+  item.addEventListener('click', editPost)
+});

@@ -94,4 +94,19 @@ router.post('/delete-post', async (req, res) => {
   }
 });
 
+router.put('/edit-post', async (req, res) => {
+  try {
+    const postInstance = await Post.findByPk(req.body.post_id);
+    await postInstance.update({
+      title: req.body.title,
+      content: req.body.content,
+      date: new Date()
+    });
+    res.status(200).json(postInstance);
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
+  }
+});
+
 module.exports = router;

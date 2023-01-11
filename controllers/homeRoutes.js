@@ -55,6 +55,21 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const dbPosts = await Post.findByPk(req.params.id);
+    const title = dbPosts.title;
+    const content = dbPosts.content
+    res.render('edit-post', {
+      title,
+      content,
+      id: req.params.id
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.get('/new-post', async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
