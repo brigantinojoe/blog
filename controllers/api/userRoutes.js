@@ -109,4 +109,18 @@ router.put('/edit-post', async (req, res) => {
   }
 });
 
+router.post('/save-comment', async (req, res) => {
+  try {
+    const dbPosts = await Comments.create({
+      content: req.body.content,
+      post_id: req.body.post_id,
+      username: req.session.username,
+      date: new Date()
+    });
+    res.status(200).json(dbPosts);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

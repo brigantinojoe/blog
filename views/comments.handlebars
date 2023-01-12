@@ -1,5 +1,5 @@
-<section class="p-3 bg-secondary" style="height: 100vh;">
-  <div class="card mt-3" id="{{id}}">
+<section class="p-3 bg-secondary" style="height: 100vh;" id="section">
+  <div class="card mt-3" id="{{post_id}}">
     <div class="card-header flex-column bg-secondary text-light">
       {{title}}
     </div>
@@ -12,7 +12,8 @@
     </div>
   </div>
   <div class="mt-3 d-flex row justify-content-center fixed-bottom">
-    <button type="button" class="w-10 btn btn-dark text-center" id="new-post">+ New Comment</button>
+    <button type="button" class="w-10 btn btn-dark text-center" id="new-comment">+ New Comment</button>
+    <button type="button" class="w-10 btn btn-dark text-center" id="save-comment" style="display: none;">Save Comment</button>
   </div>
   <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
@@ -25,3 +26,4 @@
 {{#if logged_in}}
   <script src="../js/logout.js"></script>
   {{/if}}
+  <script src="../js/comment.js"></script>
