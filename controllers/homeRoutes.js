@@ -75,7 +75,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/new-post', async (req, res) => {
+router.get('/dashboard/new-post', async (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
     return;

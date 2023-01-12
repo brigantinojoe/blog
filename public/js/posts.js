@@ -1,6 +1,6 @@
 const renderNewPost = async (event) => {
   event.preventDefault();
-  document.location.replace('/new-post');
+  document.location.replace('dashboard/new-post');
 };
 
 document
