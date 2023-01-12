@@ -12,14 +12,15 @@ Post.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-// // Posts have many comments
-// Post.hasMany(Comments, {
-//     foreignKey: 'post_id'
-// });
+// Posts have many comments
+Post.hasMany(Comments, {
+    foreignKey: 'post_id',
+    onDelete: 'CASCADE',
+});
 
-// // Comments belong to posts
-// Comments.belongsTo(Post, {
-//     foreignKey: 'post_id'
-// });
+// Comments belong to posts
+Comments.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
 
 module.exports = { User, Post, Comments };
