@@ -1,17 +1,18 @@
 <section class="p-3 bg-secondary" style="height: 100%;">
 {{#each posts as |post| }}
   <div class="card mt-3" id="{{id}}">
-    <div class="card-header flex-column bg-secondary text-light">
+    <div class="card-header flex-column bg-secondary text-light title-{{id}}">
       {{title}}
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <p>{{content}}</p>
+        <p class="content-{{id}}">{{content}}</p>
         <footer class="blockquote-footer">{{username}} on {{format_date date}}
         </footer>
       </blockquote>
     </div>
-    <button type="button" class="btn btn-dark text-light" id="btn-{{id}}">Comments</button>
+    <button type="button" class="btn btn-dark text-light comments-button" value="{{id}}">Comments</button>
   </div>
 {{/each}}
+<script src="./js/homepage.js"></script>
 </section>

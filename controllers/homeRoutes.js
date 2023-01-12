@@ -81,7 +81,6 @@ router.get('/new-post', async (req, res) => {
     return;
   }
   try {
-    // Database sequilize get all posts. Render posts to dashboard
     const dbPosts = await Post.findAll({ where: { user_id: req.session.user_id } });
     const posts = dbPosts.map((project) => project.get({ plain: true }));
 
@@ -92,5 +91,35 @@ router.get('/new-post', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.get('/comments/:post_id', async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.post_id);
+    const title = post.title;
+    const content = post.content;
+    const username = post.username;
+    const post_id = post.id;
+    const date = post.date;
+    const commentsAll = await Comments.findAll({
+      where: {
+        post_id: req.params.post_id
+      }
+    });
+    const comments = commentsAll.map((project) => project.get({ plain: true }));
+    res.render('comments', {
+      title,
+      content,
+      username,
+      post_id,
+      date,
+      comments,
+      user_id: req.session.user_id,
+      logged_in: req.session.logged_in
+    });
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error);
   }
 });

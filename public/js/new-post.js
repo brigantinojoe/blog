@@ -11,7 +11,6 @@ const savePost = async (event) => {
 
     if (response.ok) {
         document.location.replace('/dashboard');
-        console.log(response);
     } else {
         alert(response.statusText);
     }
@@ -23,7 +22,6 @@ document
 
 const deletePost = async (event) => {
     event.preventDefault();
-    console.log("test");
     document.location.replace('/dashboard');
 };
 
